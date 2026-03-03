@@ -1,13 +1,9 @@
-import ProductCardComponent from "../components/ProductCard";
+import ProductCardLayout from "../layouts/ProductCardLayout";
 
 export default function HomePage() {
   return (
     <>
-      <div className="product-layout">
-        <ProductCardComponent />
-        <ProductCardComponent />
-        <ProductCardComponent />
-      </div>
+      <ProductCardLayout />
     </>
   );
 }
