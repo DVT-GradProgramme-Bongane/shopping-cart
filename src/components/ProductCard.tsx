@@ -9,10 +9,17 @@ export default function ProductCardComponent() {
     <>
       <div className="product">
         <div className="product-information-container">
-          <img src={product.image}  alt="product-image" height={200} width={200}></img>
+          <img
+            src={product.image}
+            alt="product-image"
+            height={200}
+            width={200}
+          ></img>
           <p>R {product.price}</p>
           <p>{product.title}</p>
-          <p>{product.description}</p>
+          <div className="description-box">
+            <p className="description">{product.description}</p>
+          </div>
           <p>{product.category}</p>
           <p>{product.rating.rate}</p>
           <p>{product.rating.count}</p>
