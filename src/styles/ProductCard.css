@@ -1,0 +1,4 @@
+.product-information-container {
+  display: flex;
+  flex-direction: column;
+}

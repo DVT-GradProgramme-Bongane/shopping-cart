@@ -1,11 +1,24 @@
+import { useContext } from "react";
+import "../styles/ProductCard.css";
+import { ProductContext } from "../utils/ProductList";
+
 export default function ProductCardComponent() {
+  const product = useContext(ProductContext);
+
   return (
     <>
       <div className="product">
-        <img alt="product-image"></img>
-        <p>Price</p>
+        <div className="product-information-container">
+          <img src={product.image}  alt="product-image" height={200} width={200}></img>
+          <p>R {product.price}</p>
+          <p>{product.title}</p>
+          <p>{product.description}</p>
+          <p>{product.category}</p>
+          <p>{product.rating.rate}</p>
+          <p>{product.rating.count}</p>
+        </div>
+        <button className="add-to-cart-button">Add to cart</button>
       </div>
-      <button className="add-to-cart-button">Add to cart</button>
     </>
   );
 }
