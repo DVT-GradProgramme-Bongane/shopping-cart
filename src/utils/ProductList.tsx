@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface Product {
+export interface Product {
   category: string;
   description: string;
   id: number;
