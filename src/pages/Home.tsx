@@ -28,7 +28,7 @@ export default function HomePage() {
       <ProductsContext value={products}>
         <AddCartContext value={addToCart}>
             <CartProductContext value={cartItems}>
-              <HeaderComponent products={cartItems}/>
+              <HeaderComponent/>
             </CartProductContext>
           <ProductCardLayout />
         </AddCartContext>

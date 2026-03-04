@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "../styles/Header.css";
-import { CartProductContext, type Product } from "../utils/ProductList";
+import { CartProductContext} from "../utils/ProductList";
 
 export default function HeaderComponent() {
   const products = useContext(CartProductContext)
@@ -10,11 +10,11 @@ export default function HeaderComponent() {
       <header className="shop-header">
         e-Shop
         <div className="cart-container-div">
-          <p>{products.length}</p>
+          <p>{products?.length}</p>
           <div className="cart-total-div">
             <label className="cart-label">Cart</label>
             <p>
-              R {products.reduce((accumulator, product) => {
+              R {products?.reduce((accumulator, product) => {
                 return accumulator + product.price;
               }, 0)
               }
