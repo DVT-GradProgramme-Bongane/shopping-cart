@@ -7,15 +7,17 @@ export default function ProductCardLayout() {
   const products = useContext(ProductsContext);
   return (
     <>
-      <div className="product-layout-container">
-        {products.map((product) => {
-          return (
-            <ProductContext key={product.id} value={product}>
-              <ProductCardComponent key={product.id} />
-            </ProductContext>
-          );
-        })}
-      </div>
+      <section className="products-section">
+        <div className="product-layout-container">
+          {products.map((product) => {
+            return (
+              <ProductContext key={product.id} value={product}>
+                <ProductCardComponent key={product.id} />
+              </ProductContext>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }
