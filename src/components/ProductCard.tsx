@@ -8,30 +8,43 @@ export default function ProductCardComponent() {
 
   return (
     <>
-      <div className="product">
-        <div className="product-information-container">
+      <article className="product-card">
           <img
             src={product.image}
-            alt="product-image"
-            height={200}
-            width={200}
-          ></img>
-          <p>R {product.price}</p>
-          <p>{product.title}</p>
-          <div className="description-box">
-            <p className="description">{product.description}</p>
+            alt="Product image"
+          />
+
+          <div className="product-price">
+            <p>R {product.price}</p>
           </div>
-          <p>{product.category}</p>
-          <p>{product.rating.rate}</p>
-          <p>{product.rating.count}</p>
-        </div>
+
+          <div className="product-title">
+            <p>{product.title}</p>
+          </div>
+
+          <div className="product-description">
+            <p>{product.description}</p>
+          </div>
+          
+          <div className="product-category">
+            <p>{product.category}</p>
+          </div>
+
+          <div className="product-rating">
+            <p>{product.rating.rate}</p>
+          </div>
+
+          <div className="product-rating-count">
+            <p>{product.rating.count}</p>
+          </div>
+          
         <button
           className="add-to-cart-button"
           onClick={() => handleOnClick(product)}
         >
           Add to cart
         </button>
-      </div>
+      </article>
     </>
   );
 }
