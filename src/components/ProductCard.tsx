@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import "../styles/ProductCard.css";
-import { ProductContext } from "../utils/ProductList";
+import { AddCartContext, ProductContext } from "../utils/ProductList";
 
 export default function ProductCardComponent() {
   const product = useContext(ProductContext);
+  const handleOnClick = useContext(AddCartContext);
 
   return (
     <>
@@ -24,7 +25,12 @@ export default function ProductCardComponent() {
           <p>{product.rating.rate}</p>
           <p>{product.rating.count}</p>
         </div>
-        <button className="add-to-cart-button">Add to cart</button>
+        <button
+          className="add-to-cart-button"
+          onClick={() => handleOnClick(product)}
+        >
+          Add to cart
+        </button>
       </div>
     </>
   );

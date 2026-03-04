@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, type BaseSyntheticEvent } from "react";
 
 export interface Product {
   category: string;
@@ -21,5 +21,16 @@ const firstProduct: Product = {
 };
 
 export const ProductsContext = createContext([firstProduct]);
-
 export const ProductContext = createContext(firstProduct);
+
+export const AddCartContext = createContext((product: Product) => {});
+
+function cartItemsReduce(items: Product[], action: any) {
+  switch (action.type) {
+    case "added":
+      return {};
+    default: {
+      throw Error("Unknown action: " + action.type);
+    }
+  }
+}
