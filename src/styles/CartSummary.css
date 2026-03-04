@@ -1,4 +1,5 @@
 .cart-summary {
+  margin-top: 20px;
   background: white;
   border: 1px solid #bbb;
   border-radius: 4px;
@@ -33,6 +34,8 @@
   flex-direction: column;
   gap: 6px;
   padding-bottom: 10px;
+  border-bottom: 1px solid #bbb;
+  font-size: 11px;
 }
 
 .cart-totals {
@@ -97,56 +100,43 @@
   gap: 6px;
 }
 
-.qty-controls {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.decrease-item-button,
+.add-item-button {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    color: #888;
 }
 
-.qty-btn {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 14px;
-  color: var(--text);
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
-  line-height: 1;
-  padding: 0;
-  font-family: var(--font-mono);
-}
-.qty-btn:hover {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: white;
+.decrease-item-button:hover,
+.add-item-button:hover {
+ background: #888;
+ border-color: #888;
+  color: black;
 }
 
-.qty-count {
-  min-width: 24px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.remove-btn {
-  font-size: 10px;
-  color: #bbb;
+.remove-item-button {
+  margin-left: auto;
   background: none;
   border: none;
-  cursor: pointer;
-  letter-spacing: 0.05em;
+  font-size: 10px;
+  color: #bbb;
   text-transform: uppercase;
-  padding: 0;
-  font-family: var(--font-mono);
-  transition: color 0.15s;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.2s;
 }
-.remove-btn:hover {
+
+.remove-item-button:hover {
   color: #e55;
+}
+
+.cart-totals {
+  font-size: 12px;
+  color: #c9933a;
+  font-weight: 500;
 }
