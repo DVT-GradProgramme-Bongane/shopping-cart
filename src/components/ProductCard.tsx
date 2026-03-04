@@ -9,7 +9,10 @@ export default function ProductCardComponent() {
   return (
     <>
       <article className="product-card">
-        <img src={product.image} alt={product.title} />
+        <div className="product-image-wrapper">
+          <img src={product.image} alt={product.title} />
+          <span className="product-category-badge">{product.category}</span>
+        </div>
 
         <div className="product-price">
           <p>R {product.price}</p>
@@ -22,17 +25,10 @@ export default function ProductCardComponent() {
         <div className="product-description">
           <p>{product.description}</p>
         </div>
-
-        <div className="product-category">
-          <p>{product.category}</p>
-        </div>
-
+       
         <div className="product-rating">
-          <p>{product.rating.rate}</p>
-        </div>
-
-        <div className="product-rating-count">
-          <p>{product.rating.count}</p>
+          <span className="product-rating-score">{product.rating.rate}</span>
+          <span className="product-rating-count">{product.rating.count}</span>
         </div>
 
         <button
