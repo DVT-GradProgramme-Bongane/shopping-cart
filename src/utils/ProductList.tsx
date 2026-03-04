@@ -23,8 +23,14 @@ const firstProduct: Product = {
 export const ProductsContext = createContext([firstProduct]);
 export const ProductContext = createContext(firstProduct);
 
-export const AddCartContext = createContext((product: Product) => {});
+export const AddCartContext = createContext<(product: Product) => void>(
+  () => {},
+);
 export const CartProductContext = createContext<Product[] | null>(null);
+
+export const RemoveCartContext = createContext<(product: Product) => void>(
+  () => {},
+);
 
 export function cartItemsReducer(
   items: Product[],
@@ -33,6 +39,9 @@ export function cartItemsReducer(
   switch (action.type) {
     case "added":
       return [...items, action.product];
+    case "removed":
+      const index = items.findIndex((i) => i.id === action.product.id);
+      return items.filter((_, i) => i !== index);
     default: {
       throw Error("Unknown action: " + action.type);
     }

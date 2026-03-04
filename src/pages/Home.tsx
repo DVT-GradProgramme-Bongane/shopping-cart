@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import HeaderComponent from "../components/Header";
 import ProductCardLayout from "../layouts/ProductCardLayout";
 import {
@@ -6,8 +6,10 @@ import {
   cartItemsReducer,
   CartProductContext,
   ProductsContext,
+  RemoveCartContext,
   type Product,
 } from "../utils/ProductList";
+import CartSummaryComponent from "../components/CartSummary";
 
 fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
@@ -24,16 +26,26 @@ export default function HomePage() {
     });
   }
 
+  function removeFromCart(removedProduct: Product) {
+    dispatch({
+      type: "removed",
+      product: removedProduct,
+    });
+  }
+
   return (
     <main>
-      <ProductsContext value={products}>
-        <AddCartContext value={addToCart}>
-          <CartProductContext value={cartItems}>
-            <HeaderComponent />
-          </CartProductContext>
-          <ProductCardLayout />
-        </AddCartContext>
-      </ProductsContext>
+      <RemoveCartContext value={removeFromCart}>
+        <ProductsContext value={products}>
+          <AddCartContext value={addToCart}>
+            <CartProductContext value={cartItems}>
+              <HeaderComponent />
+            </CartProductContext>
+            <ProductCardLayout />
+            <CartSummaryComponent />
+          </AddCartContext>
+        </ProductsContext>
+      </RemoveCartContext>
     </main>
   );
 }
