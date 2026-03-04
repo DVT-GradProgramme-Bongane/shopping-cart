@@ -40,6 +40,7 @@ export function cartItemsReducer(
     case "added":
       return [...items, action.product];
     case "removed":
+      console.log("removed")
       const index = items.findIndex((i) => i.id === action.product.id);
       return items.filter((_, i) => i !== index);
     default: {
