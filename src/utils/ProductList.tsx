@@ -26,10 +26,13 @@ export const ProductContext = createContext(firstProduct);
 export const AddCartContext = createContext((product: Product) => {});
 export const CartProductContext = createContext<Product[] | null>(null);
 
-function cartItemsReduce(items: Product[], action: any) {
+export function cartItemsReducer(
+  items: Product[],
+  action: { type: string; product: Product },
+) {
   switch (action.type) {
     case "added":
-      return {};
+      return [...items, action.product];
     default: {
       throw Error("Unknown action: " + action.type);
     }

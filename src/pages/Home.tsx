@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import HeaderComponent from "../components/Header";
 import ProductCardLayout from "../layouts/ProductCardLayout";
 import {
   AddCartContext,
+  cartItemsReducer,
   CartProductContext,
   ProductsContext,
   type Product,
@@ -15,10 +16,11 @@ const response = await fetch("https://fakestoreapi.com/products");
 const products = await response.json();
 
 export default function HomePage() {
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartItems, dispatch] = useReducer(cartItemsReducer, []);
   function addToCart(newProduct: Product) {
-    setCartItems((cartItem) => {
-      return [...cartItem, newProduct];
+    dispatch({
+      type: "added",
+      product: newProduct,
     });
   }
 

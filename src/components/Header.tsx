@@ -19,9 +19,11 @@ export default function HeaderComponent() {
           <div className="count-paragraph">{products?.length}</div>
           <p>
             R{" "}
-            {products?.reduce((accumulator, product) => {
-              return accumulator + product.price;
-            }, 0)}
+            {products
+              ?.reduce((accumulator, product) => {
+                return accumulator + product.price;
+              }, 0)
+              .toFixed(2)}
           </p>
         </div>
       </header>
