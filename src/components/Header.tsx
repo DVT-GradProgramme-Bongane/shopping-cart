@@ -9,17 +9,20 @@ export default function HeaderComponent() {
     <>
       <header className="shop-header">
         e-Shop
+        <input className="search-bar-input" placeholder="search products..." />
         <div className="cart-container-div">
-          <p>{products?.length}</p>
-          <div className="cart-total-div">
-            <label className="cart-label">Cart</label>
-            <p>
-              R{" "}
-              {products?.reduce((accumulator, product) => {
-                return accumulator + product.price;
-              }, 0)}
-            </p>
-          </div>
+          <img
+            src="src/assets/shopping-chart.png"
+            alt="shopping cart icon"
+            height={20}
+          />
+          <div className="count-paragraph">{products?.length}</div>
+          <p>
+            R{" "}
+            {products?.reduce((accumulator, product) => {
+              return accumulator + product.price;
+            }, 0)}
+          </p>
         </div>
       </header>
     </>

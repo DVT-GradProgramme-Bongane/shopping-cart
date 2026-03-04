@@ -1,4 +1,4 @@
-import { createContext, type BaseSyntheticEvent } from "react";
+import { createContext } from "react";
 
 export interface Product {
   category: string;

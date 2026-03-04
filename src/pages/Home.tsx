@@ -1,4 +1,4 @@
-import { useState, type BaseSyntheticEvent } from "react";
+import { useState } from "react";
 import HeaderComponent from "../components/Header";
 import ProductCardLayout from "../layouts/ProductCardLayout";
 import {
