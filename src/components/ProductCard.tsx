@@ -14,21 +14,19 @@ export default function ProductCardComponent() {
           <span className="product-category-badge">{product.category}</span>
         </div>
 
-        <div className="product-price">
-          <p>R {product.price}</p>
-        </div>
+        <div className="product-information-container">
 
-        <div className="product-title">
-          <p>{product.title}</p>
+          <p className="product-price">R {product.price}</p>
+          <p className="product-title">{product.title}</p>
+          <p className="product-description">{product.description}</p>
         </div>
+        
+        <div className="product-meta">
 
-        <div className="product-description">
-          <p>{product.description}</p>
-        </div>
-       
         <div className="product-rating">
           <span className="product-rating-score">{product.rating.rate}</span>
           <span className="product-rating-count">{product.rating.count}</span>
+        </div>
         </div>
 
         <button
