@@ -24,6 +24,7 @@ export const ProductsContext = createContext([firstProduct]);
 export const ProductContext = createContext(firstProduct);
 
 export const AddCartContext = createContext((product: Product) => {});
+export const CartProductContext = createContext(null);
 
 function cartItemsReduce(items: Product[], action: any) {
   switch (action.type) {

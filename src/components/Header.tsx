@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import "../styles/Header.css";
-import type { Product } from "../utils/ProductList";
+import { CartProductContext, type Product } from "../utils/ProductList";
 
-export default function HeaderComponent({products}) {
+export default function HeaderComponent() {
+  const products = useContext(CartProductContext)
   console.log(products);
   return (
     <>

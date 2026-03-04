@@ -3,6 +3,7 @@ import HeaderComponent from "../components/Header";
 import ProductCardLayout from "../layouts/ProductCardLayout";
 import {
   AddCartContext,
+  CartProductContext,
   ProductsContext,
   type Product,
 } from "../utils/ProductList";
@@ -26,7 +27,9 @@ export default function HomePage() {
     <>
       <ProductsContext value={products}>
         <AddCartContext value={addToCart}>
-          <HeaderComponent products={cartItems}/>
+            <CartProductContext value={cartItems}>
+              <HeaderComponent products={cartItems}/>
+            </CartProductContext>
           <ProductCardLayout />
         </AddCartContext>
       </ProductsContext>
