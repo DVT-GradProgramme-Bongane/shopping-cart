@@ -23,7 +23,7 @@ export default function HomePage() {
   }
 
   return (
-    <>
+    <main>
       <ProductsContext value={products}>
         <AddCartContext value={addToCart}>
           <CartProductContext value={cartItems}>
@@ -32,6 +32,6 @@ export default function HomePage() {
           <ProductCardLayout />
         </AddCartContext>
       </ProductsContext>
-    </>
+    </main>
   );
 }
