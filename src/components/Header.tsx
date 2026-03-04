@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import "../styles/Header.css";
-import { CartProductContext} from "../utils/ProductList";
+import { CartProductContext } from "../utils/ProductList";
 
 export default function HeaderComponent() {
-  const products = useContext(CartProductContext)
+  const products = useContext(CartProductContext);
   console.log(products);
   return (
     <>
@@ -14,10 +14,10 @@ export default function HeaderComponent() {
           <div className="cart-total-div">
             <label className="cart-label">Cart</label>
             <p>
-              R {products?.reduce((accumulator, product) => {
+              R{" "}
+              {products?.reduce((accumulator, product) => {
                 return accumulator + product.price;
-              }, 0)
-              }
+              }, 0)}
             </p>
           </div>
         </div>

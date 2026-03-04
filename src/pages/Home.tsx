@@ -22,14 +22,13 @@ export default function HomePage() {
     });
   }
 
-
   return (
     <>
       <ProductsContext value={products}>
         <AddCartContext value={addToCart}>
-            <CartProductContext value={cartItems}>
-              <HeaderComponent/>
-            </CartProductContext>
+          <CartProductContext value={cartItems}>
+            <HeaderComponent />
+          </CartProductContext>
           <ProductCardLayout />
         </AddCartContext>
       </ProductsContext>
