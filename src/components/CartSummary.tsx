@@ -1,12 +1,17 @@
 import { useContext } from "react";
 import "../styles/CartSummary.css";
-import { CartProductContext, RemoveCartContext, type Product } from "../utils/ProductList";
+import {
+  CartProductContext,
+  DecreaseItemCartContext,
+  IncreaseItemCartContext,
+  RemoveCartContext,
+} from "../utils/ProductList";
 
 export default function CartSummaryComponent() {
   const cartItems = useContext(CartProductContext);
   const remove = useContext(RemoveCartContext);
-  const addItem = (item: Product) => {};
-  const removeItem = (item: Product) => {}
+  const addItem = useContext(IncreaseItemCartContext);
+  const removeItem = useContext(DecreaseItemCartContext);
 
   const totalPrice = cartItems?.reduce((accumulator, item) => {
     return item.quantity * item.price + accumulator;
@@ -26,14 +31,20 @@ export default function CartSummaryComponent() {
           <li key={item.id} className="cart-item">
             <span>{item.title}</span>
             <div className="cart-summary-controls">
-              <button onClick={() => removeItem(item)} className="decrease-item-button">
+              <button
+                onClick={() => removeItem(item)}
+                className="decrease-item-button"
+              >
                 -
               </button>
               <span>{item.quantity}</span>
               <button onClick={() => addItem(item)} className="add-item-button">
                 +
               </button>
-              <button onClick={() => remove(item)} className="remove-item-button">
+              <button
+                onClick={() => remove(item)}
+                className="remove-item-button"
+              >
                 Remove
               </button>
             </div>

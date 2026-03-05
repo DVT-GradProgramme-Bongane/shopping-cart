@@ -33,6 +33,13 @@ export const CartProductContext = createContext<Product[] | null>(null);
 export const RemoveCartContext = createContext<(product: Product) => void>(
   () => {},
 );
+export const DecreaseItemCartContext = createContext<
+  (product: Product) => void
+>(() => {});
+
+export const IncreaseItemCartContext = createContext<
+  (product: Product) => void
+>(() => {});
 
 export function cartItemsReducer(
   items: Product[],
@@ -60,17 +67,24 @@ export function cartItemsReducer(
       console.log(newItems);
       return [...newItems, updatedItem];
     }
-    case "removed":{
+    case "removed": {
       console.log("removed");
       const index = items.findIndex((i) => i.id === action.product.id);
-      return items.filter((_, i) => i !== index);}
+      return items.filter((_, i) => i !== index);
+    }
     case "added_item": {
       console.log("added_item");
-      break;
+      const index = items.findIndex((i) => i.id === action.product.id);
+
+      return items.map((item, i) => {
+        if (i === index) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else return { ...item };
+      });
     }
     case "removed_item": {
       console.log("removed_item");
-      break;
+      return items;
     }
     default: {
       throw Error("Unknown action: " + action.type);

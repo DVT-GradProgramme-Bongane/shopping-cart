@@ -5,6 +5,8 @@ import {
   AddCartContext,
   cartItemsReducer,
   CartProductContext,
+  DecreaseItemCartContext,
+  IncreaseItemCartContext,
   ProductsContext,
   RemoveCartContext,
   type Product,
@@ -33,18 +35,31 @@ export default function HomePage() {
     });
   }
 
+  function decreaseItemsFromCart(decreasedProduct: Product) {}
+
+  function increaseItemsInCart(increasedProduct: Product) {
+    dispatch({
+      type: "added_item",
+      product: increasedProduct,
+    });
+  }
+
   return (
     <main>
       <RemoveCartContext value={removeFromCart}>
-        <ProductsContext value={products}>
-          <AddCartContext value={addToCart}>
-            <CartProductContext value={cartItems}>
-              <HeaderComponent />
-              <ProductCardLayout />
-              <CartSummaryComponent />
-            </CartProductContext>
-          </AddCartContext>
-        </ProductsContext>
+        <DecreaseItemCartContext value={decreaseItemsFromCart}>
+          <IncreaseItemCartContext value={increaseItemsInCart}>
+            <ProductsContext value={products}>
+              <AddCartContext value={addToCart}>
+                <CartProductContext value={cartItems}>
+                  <HeaderComponent />
+                  <ProductCardLayout />
+                  <CartSummaryComponent />
+                </CartProductContext>
+              </AddCartContext>
+            </ProductsContext>
+          </IncreaseItemCartContext>
+        </DecreaseItemCartContext>
       </RemoveCartContext>
     </main>
   );
