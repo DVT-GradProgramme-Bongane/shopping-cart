@@ -60,10 +60,18 @@ export function cartItemsReducer(
       console.log(newItems);
       return [...newItems, updatedItem];
     }
-    case "removed":
+    case "removed":{
       console.log("removed");
       const index = items.findIndex((i) => i.id === action.product.id);
-      return items.filter((_, i) => i !== index);
+      return items.filter((_, i) => i !== index);}
+    case "added_item": {
+      console.log("added_item");
+      break;
+    }
+    case "removed_item": {
+      console.log("removed_item");
+      break;
+    }
     default: {
       throw Error("Unknown action: " + action.type);
     }
