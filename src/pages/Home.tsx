@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { use, useReducer } from "react";
 import HeaderComponent from "../components/Header";
 import ProductCardLayout from "../layouts/ProductCardLayout";
 import {
@@ -13,10 +13,10 @@ import {
 } from "../utils/ProductList";
 import CartSummaryComponent from "../components/CartSummary";
 
-const response = await fetch("https://fakestoreapi.com/products");
-const products = await response.json();
+const productsPromise = getData();
 
 export default function HomePage() {
+  const products = use(productsPromise);
   const [cartItems, dispatch] = useReducer(cartItemsReducer, []);
   function addToCart(newProduct: Product) {
     dispatch({
@@ -65,4 +65,20 @@ export default function HomePage() {
       </RemoveCartContext>
     </main>
   );
+}
+
+async function getData(): Promise<Product[]> {
+  const url = "https://fakestoreapi.com/products";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error: any) {
+    console.error(error.message);
+    return [];
+  }
 }

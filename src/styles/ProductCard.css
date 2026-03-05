@@ -87,6 +87,8 @@
   gap: 5px;
   font-size: 11px;
   color: #888;
+  margin-left: 8px;
+  margin-bottom: 5px;
 }
 
 .product-rating-score {

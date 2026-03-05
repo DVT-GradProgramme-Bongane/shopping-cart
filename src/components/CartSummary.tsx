@@ -21,7 +21,7 @@ export default function CartSummaryComponent() {
   }, 0);
 
   return (
-    <aside className="cart-summary">
+    <aside className="cart-summary" id="cart-summary">
       <h2>Cart Summary</h2>
       <p>Total items : {totalCartItems}</p>
       <p>Total price : R {totalPrice?.toFixed(2)}</p>
