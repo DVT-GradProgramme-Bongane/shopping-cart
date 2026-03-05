@@ -4,7 +4,6 @@ import { CartProductContext } from "../utils/ProductList";
 
 export default function HeaderComponent() {
   const products = useContext(CartProductContext);
-  console.log(products);
   return (
     <>
       <header className="shop-header">
