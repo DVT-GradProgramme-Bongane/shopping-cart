@@ -8,6 +8,7 @@ export interface Product {
   price: number;
   rating: { rate: number; count: number };
   title: string;
+  quantity: number;
 }
 
 const firstProduct: Product = {
@@ -18,6 +19,7 @@ const firstProduct: Product = {
   price: 500,
   rating: { rate: 0.1, count: 5 },
   title: "A Title",
+  quantity: 0,
 };
 
 export const ProductsContext = createContext([firstProduct]);
@@ -37,10 +39,25 @@ export function cartItemsReducer(
   action: { type: string; product: Product },
 ) {
   switch (action.type) {
-    case "added":
-      return [...items, action.product];
+    case "added": {
+      // I want to add items to the cart
+      // If the item exists in the cart increase its
+      // quantity and if not just add the item
+      // and set it's quantity to 1
+      let updatedItem;
+      updatedItem = items.find(item => item.id === action.product.id);
+      if(updatedItem){
+        updatedItem.quantity++;
+      }
+      else{
+        updatedItem = action.product;
+        updatedItem.quantity = 1;
+      }
+      const newItems = items.filter( item => item.id !== action.product.id);
+      return [...newItems, updatedItem];
+    }
     case "removed":
-      console.log("removed")
+      console.log("removed");
       const index = items.findIndex((i) => i.id === action.product.id);
       return items.filter((_, i) => i !== index);
     default: {

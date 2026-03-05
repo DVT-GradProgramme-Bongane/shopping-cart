@@ -102,20 +102,20 @@
 
 .decrease-item-button,
 .add-item-button {
-    width: 24px;
-    height: 24px;
-    background: white;
-    border: 1px solid #888;
-    border-radius: 4px;
-    font-size: 14px;
-    text-align: center;
-    color: #888;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 1px solid #888;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  color: #888;
 }
 
 .decrease-item-button:hover,
 .add-item-button:hover {
- background: #888;
- border-color: #888;
+  background: #888;
+  border-color: #888;
   color: black;
 }
 

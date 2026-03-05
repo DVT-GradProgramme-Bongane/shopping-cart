@@ -13,25 +13,24 @@ export default function CartSummaryComponent() {
       <p>Total price : total price</p>
 
       <ul className="cart-summary-list">
-        {cartItems?.map( item => 
-
-        <li key={item.id} className="cart-item">
-          <span>{item.title}</span>
-          <div className="cart-summary-controls">
-            <button onClick={() => {}} className="decrease-item-button">
-              -
-            </button>
-            <span>item</span>
-            <button onClick={() => {}} className="add-item-button">
-              +
-            </button>
-            <button onClick={() => remove} className="remove-item-button">
-              Remove
-            </button>
-          </div>
-          <span className="cart-totals">R item total = </span>
-        </li>
-        )}
+        {cartItems?.map((item) => (
+          <li key={item.id} className="cart-item">
+            <span>{item.title}</span>
+            <div className="cart-summary-controls">
+              <button onClick={() => {}} className="decrease-item-button">
+                -
+              </button>
+              <span>item quantity</span>
+              <button onClick={() => {}} className="add-item-button">
+                +
+              </button>
+              <button onClick={() => remove} className="remove-item-button">
+                Remove
+              </button>
+            </div>
+            <span className="cart-totals">R item total = </span>
+          </li>
+        ))}
         <li key={1} className="cart-item">
           <span>item title</span>
           <div className="cart-summary-controls">

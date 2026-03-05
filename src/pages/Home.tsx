@@ -40,8 +40,8 @@ export default function HomePage() {
           <AddCartContext value={addToCart}>
             <CartProductContext value={cartItems}>
               <HeaderComponent />
-            <ProductCardLayout />
-            <CartSummaryComponent />
+              <ProductCardLayout />
+              <CartSummaryComponent />
             </CartProductContext>
           </AddCartContext>
         </ProductsContext>
