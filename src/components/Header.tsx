@@ -18,7 +18,7 @@ export default function HeaderComponent() {
         <input className="search-bar-input" placeholder="search products..." />
         <div className="cart-container-div">
           <img
-            src="src/assets/shopping-chart.png"
+            src="../assets/shopping-chart.png"
             alt="shopping cart icon"
             height={20}
           />

@@ -22,7 +22,7 @@ const firstProduct: Product = {
   quantity: 0,
 };
 
-export const ProductsContext = createContext([firstProduct]);
+export const ProductsContext = createContext<Product[]>([]);
 export const ProductContext = createContext(firstProduct);
 
 export const AddCartContext = createContext<(product: Product) => void>(
@@ -64,7 +64,6 @@ export function cartItemsReducer(
       const newItems = [
         ...items.filter((item) => item.id !== action.product.id),
       ];
-      console.log(newItems);
       return [...newItems, updatedItem];
     }
     case "removed": {
