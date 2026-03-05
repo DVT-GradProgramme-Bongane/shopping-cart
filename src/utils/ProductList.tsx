@@ -68,14 +68,11 @@ export function cartItemsReducer(
       return [...newItems, updatedItem];
     }
     case "removed": {
-      console.log("removed");
       const index = items.findIndex((i) => i.id === action.product.id);
       return items.filter((_, i) => i !== index);
     }
     case "added_item": {
-      console.log("added_item");
       const index = items.findIndex((i) => i.id === action.product.id);
-
       return items.map((item, i) => {
         if (i === index) {
           return { ...item, quantity: item.quantity + 1 };
@@ -83,8 +80,13 @@ export function cartItemsReducer(
       });
     }
     case "removed_item": {
-      console.log("removed_item");
-      return items;
+      console.log("removed item");
+      const index = items.findIndex((i) => i.id === action.product.id);
+      return items.map((item, i) => {
+        if (i === index && item.quantity > 0) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else return { ...item };
+      });
     }
     default: {
       throw Error("Unknown action: " + action.type);

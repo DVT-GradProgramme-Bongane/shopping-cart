@@ -35,7 +35,12 @@ export default function HomePage() {
     });
   }
 
-  function decreaseItemsFromCart(decreasedProduct: Product) {}
+  function decreaseItemsFromCart(decreasedProduct: Product) {
+    dispatch({
+      type: "removed_item",
+      product: decreasedProduct,
+    });
+  }
 
   function increaseItemsInCart(increasedProduct: Product) {
     dispatch({
