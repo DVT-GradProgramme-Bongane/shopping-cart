@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "../styles/Header.css";
 import { CartProductContext } from "../utils/ProductList";
+import cartIcon from "../assets/shopping-chart.png"
 
 export default function HeaderComponent() {
   const cartItems = useContext(CartProductContext);
@@ -18,7 +19,7 @@ export default function HeaderComponent() {
         <input className="search-bar-input" placeholder="search products..." />
         <div className="cart-container-div">
           <img
-            src="../assets/shopping-chart.png"
+            src={cartIcon}
             alt="shopping cart icon"
             height={20}
           />
