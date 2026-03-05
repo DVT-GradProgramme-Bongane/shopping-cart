@@ -13,11 +13,9 @@ import {
 } from "../utils/ProductList";
 import CartSummaryComponent from "../components/CartSummary";
 
-
 const productsPromise = getData();
 
 export default function HomePage() {
-
   const products = use(productsPromise);
   const [cartItems, dispatch] = useReducer(cartItemsReducer, []);
   function addToCart(newProduct: Product) {
@@ -69,7 +67,7 @@ export default function HomePage() {
   );
 }
 
-async function getData() : Promise<Product[]>{
+async function getData(): Promise<Product[]> {
   const url = "https://fakestoreapi.com/products";
   try {
     const response = await fetch(url);
@@ -79,8 +77,8 @@ async function getData() : Promise<Product[]>{
 
     const result = await response.json();
     return result;
-  } catch (error : any) {
+  } catch (error: any) {
     console.error(error.message);
-    return []
+    return [];
   }
 }

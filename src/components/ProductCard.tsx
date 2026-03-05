@@ -22,8 +22,12 @@ export default function ProductCardComponent() {
 
         <div className="product-meta">
           <div className="product-rating">
-            <span className="product-rating-score">{"\u2b52" + product.rating.rate} </span>
-            <span className="product-rating-count">{"(" + product.rating.count + ")"}</span>
+            <span className="product-rating-score">
+              {"\u2b52" + product.rating.rate}{" "}
+            </span>
+            <span className="product-rating-count">
+              {"(" + product.rating.count + ")"}
+            </span>
           </div>
         </div>
 
