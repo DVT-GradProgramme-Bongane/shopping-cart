@@ -1,0 +1,31 @@
+import { useContext } from "react";
+import "../styles/Header.css";
+import { CartProductContext } from "../utils/ProductList";
+
+export default function HeaderComponent() {
+  const cartItems = useContext(CartProductContext);
+  const totalPrice = cartItems?.reduce((accumulator, item) => {
+    return item.quantity * item.price + accumulator;
+  }, 0);
+  const totalCartItems = cartItems?.reduce((totalItemsAccumulator, item) => {
+    return item.quantity + totalItemsAccumulator;
+  }, 0);
+
+  return (
+    <>
+      <header className="shop-header">
+        e-Shop
+        <input className="search-bar-input" placeholder="search products..." />
+        <div className="cart-container-div">
+          <img
+            src="src/assets/shopping-chart.png"
+            alt="shopping cart icon"
+            height={20}
+          />
+          <div className="count-paragraph">{totalCartItems}</div>
+          <p>R{totalPrice?.toFixed(2)}</p>
+        </div>
+      </header>
+    </>
+  );
+}

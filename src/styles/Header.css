@@ -1,0 +1,38 @@
+.shop-header {
+  border-radius: 6px;
+  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  margin: 20px;
+  align-items: center;
+}
+
+.search-bar-input {
+  border-radius: 6px;
+  background-color: white;
+  height: 30px;
+}
+
+.cart-container-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-container-div img,
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.count-paragraph {
+  background-color: #d9d9d9;
+  border-radius: 22px;
+  height: 22px;
+  width: 22px;
+  align-content: center;
+}
