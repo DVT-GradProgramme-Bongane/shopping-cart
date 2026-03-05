@@ -37,9 +37,7 @@ A shopping cart app built with React, TypeScript, Context API, and `useReducer` 
 ### State Management
 - All cart state lives in a single `useReducer`
 - Wrapped in a `CartProvider` component
-- Exposed via two custom hooks:
-  - `useCart()` — returns the current cart items
-  - `useCartDispatch()` — returns the dispatch function
+- Exposed via hooks
 
 ### Custom Hooks
 | Hook | Purpose |
