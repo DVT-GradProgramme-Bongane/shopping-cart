@@ -80,13 +80,13 @@ export function cartItemsReducer(
       });
     }
     case "removed_item": {
-      console.log("removed item");
       const index = items.findIndex((i) => i.id === action.product.id);
-      return items.map((item, i) => {
+      const newItems = items.map((item, i) => {
         if (i === index && item.quantity > 0) {
           return { ...item, quantity: item.quantity - 1 };
         } else return { ...item };
       });
+      return newItems.filter((item) => item.quantity > 0);
     }
     default: {
       throw Error("Unknown action: " + action.type);

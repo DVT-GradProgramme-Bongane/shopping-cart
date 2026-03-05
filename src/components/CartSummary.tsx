@@ -53,22 +53,6 @@ export default function CartSummaryComponent() {
             </span>
           </li>
         ))}
-        <li key={1} className="cart-item">
-          <span>item title</span>
-          <div className="cart-summary-controls">
-            <button onClick={() => {}} className="decrease-item-button">
-              -
-            </button>
-            <span>item quantity</span>
-            <button onClick={() => {}} className="add-item-button">
-              +
-            </button>
-            <button onClick={() => {}} className="remove-item-button">
-              Remove
-            </button>
-          </div>
-          <span className="cart-totals">R item total</span>
-        </li>
       </ul>
     </aside>
   );
