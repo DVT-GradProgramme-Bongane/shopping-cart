@@ -5,12 +5,18 @@ import { CartProductContext, RemoveCartContext } from "../utils/ProductList";
 export default function CartSummaryComponent() {
   const cartItems = useContext(CartProductContext);
   const remove = useContext(RemoveCartContext);
+  const totalPrice = cartItems?.reduce((accumulator, item) => {
+    return item.quantity * item.price + accumulator;
+  }, 0);
+  const totalCartItems = cartItems?.reduce((totalItemsAccumulator, item) => {
+    return item.quantity + totalItemsAccumulator;
+  }, 0);
 
   return (
     <aside className="cart-summary">
       <h2>Cart Summary</h2>
-      <p>Total items : total items</p>
-      <p>Total price : total price</p>
+      <p>Total items : {totalCartItems}</p>
+      <p>Total price : R {totalPrice}</p>
 
       <ul className="cart-summary-list">
         {cartItems?.map((item) => (
@@ -20,7 +26,7 @@ export default function CartSummaryComponent() {
               <button onClick={() => {}} className="decrease-item-button">
                 -
               </button>
-              <span>item quantity</span>
+              <span>{item.quantity}</span>
               <button onClick={() => {}} className="add-item-button">
                 +
               </button>
@@ -28,7 +34,9 @@ export default function CartSummaryComponent() {
                 Remove
               </button>
             </div>
-            <span className="cart-totals">R item total = </span>
+            <span className="cart-totals">
+              R {(item.quantity * item.price).toFixed(2)}
+            </span>
           </li>
         ))}
         <li key={1} className="cart-item">
