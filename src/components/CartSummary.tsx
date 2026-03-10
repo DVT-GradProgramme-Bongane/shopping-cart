@@ -1,17 +1,11 @@
-import { useContext } from "react";
 import "../styles/CartSummary.css";
-import {
-  CartProductContext,
-  DecreaseItemCartContext,
-  IncreaseItemCartContext,
-  RemoveCartContext,
-} from "../utils/ProductList";
+import { useDispatch, useSelector } from "react-redux";
+import store from "../app/store";
 
 export default function CartSummaryComponent() {
-  const cartItems = useContext(CartProductContext);
-  const remove = useContext(RemoveCartContext);
-  const addItem = useContext(IncreaseItemCartContext);
-  const removeItem = useContext(DecreaseItemCartContext);
+  type RootState = ReturnType< typeof store.getState>;
+  const cartItems = useSelector((state: RootState) => state.cartItems);
+  const dispatch = useDispatch();
 
   const totalPrice = cartItems?.reduce((accumulator, item) => {
     return item.quantity * item.price + accumulator;
@@ -32,17 +26,17 @@ export default function CartSummaryComponent() {
             <span>{item.title}</span>
             <div className="cart-summary-controls">
               <button
-                onClick={() => removeItem(item)}
+                onClick={() => dispatch({type: "cartItems/removed_item", payload: item})}
                 className="decrease-item-button"
               >
                 -
               </button>
               <span>{item.quantity}</span>
-              <button onClick={() => addItem(item)} className="add-item-button">
+              <button onClick={() => dispatch({type: "cartItems/added_item", payload: item})} className="add-item-button">
                 +
               </button>
               <button
-                onClick={() => remove(item)}
+                onClick={() => dispatch({ type: "cartItems/removed", payload: item })}
                 className="remove-item-button"
               >
                 Remove
