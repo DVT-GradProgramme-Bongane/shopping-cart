@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import "../styles/ProductCard.css";
-import { ProductContext } from "../utils/ProductList";
+import { ProductContext } from "../../../utils/ProductList";
 import { useDispatch } from "react-redux";
+import { added } from "../cartItemsSlice";
 
 export default function ProductCardComponent() {
   const product = useContext(ProductContext);
@@ -16,7 +17,7 @@ export default function ProductCardComponent() {
         </div>
 
         <div className="product-information-container">
-          <p className="product-price">R {product.price}</p>
+          <p className="product-price">R {product.price.toFixed(2)}</p>
           <p className="product-title">{product.title}</p>
           <p className="product-description">{product.description}</p>
         </div>
@@ -34,7 +35,9 @@ export default function ProductCardComponent() {
 
         <button
           className="add-to-cart-button"
-          onClick={() => dispatch({type: "cartItems/added", payload: product})}
+          onClick={() =>
+            dispatch({ type: added.type, payload: product })
+          }
         >
           Add to cart
         </button>

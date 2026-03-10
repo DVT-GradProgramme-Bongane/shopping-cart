@@ -1,12 +1,12 @@
 import "../styles/Header.css";
 import cartIcon from "../assets/shopping-chart.png";
 import { useSelector } from "react-redux";
-import type store from "../app/store";
+import type store from "../../../app/store";
 
 export default function HeaderComponent() {
-  type RootState = ReturnType< typeof store.getState>;
+  type RootState = ReturnType<typeof store.getState>;
   const cartItems = useSelector((state: RootState) => state.cartItems);
-  
+
   const totalPrice = cartItems?.reduce((accumulator, item) => {
     return item.quantity * item.price + accumulator;
   }, 0);

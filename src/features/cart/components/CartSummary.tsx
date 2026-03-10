@@ -1,9 +1,10 @@
 import "../styles/CartSummary.css";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../app/store";
+import store from "../../../app/store";
+import { added, added_item, removed, removed_item } from "../cartItemsSlice";
 
 export default function CartSummaryComponent() {
-  type RootState = ReturnType< typeof store.getState>;
+  type RootState = ReturnType<typeof store.getState>;
   const cartItems = useSelector((state: RootState) => state.cartItems);
   const dispatch = useDispatch();
 
@@ -26,17 +27,24 @@ export default function CartSummaryComponent() {
             <span>{item.title}</span>
             <div className="cart-summary-controls">
               <button
-                onClick={() => dispatch({type: "cartItems/removed_item", payload: item})}
+                onClick={() =>
+                  dispatch({ type: removed_item.type, payload: item })
+                }
                 className="decrease-item-button"
               >
                 -
               </button>
               <span>{item.quantity}</span>
-              <button onClick={() => dispatch({type: "cartItems/added_item", payload: item})} className="add-item-button">
+              <button
+                onClick={() =>
+                  dispatch({ type: added_item.type, payload: item })
+                }
+                className="add-item-button"
+              >
                 +
               </button>
               <button
-                onClick={() => dispatch({ type: "cartItems/removed", payload: item })}
+                onClick={() => dispatch({ type: removed.type, payload: item })}
                 className="remove-item-button"
               >
                 Remove

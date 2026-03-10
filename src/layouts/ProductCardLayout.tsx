@@ -1,14 +1,10 @@
 import { useContext } from "react";
-import ProductCardComponent from "../components/ProductCard";
+import ProductCardComponent from "../features/cart/components/ProductCard";
 import "../styles/ProductLayout.css";
 import { ProductContext, ProductsContext } from "../utils/ProductList";
-import { useSelector } from "react-redux";
-import store from "../app/store";
 
 export default function ProductCardLayout() {
   const products = useContext(ProductsContext);
-  console.log(store.getState())
-  // const products = useSelector(state: rootState => state.cartItems)
   return (
     <>
       <section className="products-section">
