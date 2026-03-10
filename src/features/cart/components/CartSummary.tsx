@@ -1,12 +1,10 @@
-import "../styles/CartSummary.css";
-import { useDispatch, useSelector } from "react-redux";
-import store from "../../../app/store";
-import { added, added_item, removed, removed_item } from "../cartItemsSlice";
+import "./CartSummary.css";
+import { itemRemoved, itemDecreased, itemIncremented } from "../cartItemsSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
 export default function CartSummaryComponent() {
-  type RootState = ReturnType<typeof store.getState>;
-  const cartItems = useSelector((state: RootState) => state.cartItems);
-  const dispatch = useDispatch();
+  const cartItems = useAppSelector((state) => state.cartItems);
+  const dispatch = useAppDispatch();
 
   const totalPrice = cartItems?.reduce((accumulator, item) => {
     return item.quantity * item.price + accumulator;
@@ -27,24 +25,20 @@ export default function CartSummaryComponent() {
             <span>{item.title}</span>
             <div className="cart-summary-controls">
               <button
-                onClick={() =>
-                  dispatch({ type: removed_item.type, payload: item })
-                }
+                onClick={() => dispatch(itemDecreased(item))}
                 className="decrease-item-button"
               >
                 -
               </button>
               <span>{item.quantity}</span>
               <button
-                onClick={() =>
-                  dispatch({ type: added_item.type, payload: item })
-                }
-                className="add-item-button"
+                onClick={() => dispatch(itemIncremented(item))}
+                className="increase-item-button"
               >
                 +
               </button>
               <button
-                onClick={() => dispatch({ type: removed.type, payload: item })}
+                onClick={() => dispatch(itemRemoved(item))}
                 className="remove-item-button"
               >
                 Remove

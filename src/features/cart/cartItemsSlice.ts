@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   name: "cartItems",
   initialState: [] as Product[],
   reducers: {
-    added: (state, action: PayloadAction<Product>) => {
+    itemAdded: (state, action: PayloadAction<Product>) => {
       const found = state.find((item) => item.id === action.payload.id);
       // I want to add items to the cart
       // If the item exists in the cart increase its
@@ -25,12 +25,11 @@ const cartSlice = createSlice({
       ];
       return [...newItems, updatedItem];
     },
-    removed: (state, action: PayloadAction<Product>) => {
-      console.log("removed");
+    itemRemoved: (state, action: PayloadAction<Product>) => {
       const index = state.findIndex((i) => i.id === action.payload.id);
       return state.filter((_, i) => i !== index);
     },
-    added_item: (state, action: PayloadAction<Product>) => {
+    itemIncremented: (state, action: PayloadAction<Product>) => {
       const index = state.findIndex((i) => i.id === action.payload.id);
       return state.map((item, i) => {
         if (i === index) {
@@ -38,7 +37,7 @@ const cartSlice = createSlice({
         } else return { ...item };
       });
     },
-    removed_item: (state, action: PayloadAction<Product>) => {
+    itemDecreased: (state, action: PayloadAction<Product>) => {
       const index = state.findIndex((i) => i.id === action.payload.id);
       const newItems = state.map((item, i) => {
         if (i === index && item.quantity > 0) {
@@ -50,6 +49,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { added, added_item, removed_item, removed } = cartSlice.actions;
+export const { itemAdded, itemIncremented, itemDecreased, itemRemoved } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

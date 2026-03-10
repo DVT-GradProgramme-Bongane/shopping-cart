@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import "../styles/ProductCard.css";
+import "./ProductCard.css";
 import { ProductContext } from "../../../utils/ProductList";
-import { useDispatch } from "react-redux";
-import { added } from "../cartItemsSlice";
+import { itemAdded } from "../cartItemsSlice";
+import { useAppDispatch } from "../../../app/hooks";
 
 export default function ProductCardComponent() {
   const product = useContext(ProductContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -35,9 +35,7 @@ export default function ProductCardComponent() {
 
         <button
           className="add-to-cart-button"
-          onClick={() =>
-            dispatch({ type: added.type, payload: product })
-          }
+          onClick={() => dispatch(itemAdded(product))}
         >
           Add to cart
         </button>
