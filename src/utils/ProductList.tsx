@@ -88,7 +88,7 @@ export function cartItemsReducer(
       return newItems.filter((item) => item.quantity > 0);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      return items;
     }
   }
 }

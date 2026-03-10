@@ -1,10 +1,11 @@
-import { useContext } from "react";
-import "../styles/Header.css";
-import { CartProductContext } from "../utils/ProductList";
-import cartIcon from "../assets/shopping-chart.png";
+import "./Header.css";
+import cartIcon from "../../../assets/shopping-chart.png";
+import { useAppSelector } from "../../../app/hooks";
+
 
 export default function HeaderComponent() {
-  const cartItems = useContext(CartProductContext);
+  const cartItems = useAppSelector((state) => state.cartItems);
+
   const totalPrice = cartItems?.reduce((accumulator, item) => {
     return item.quantity * item.price + accumulator;
   }, 0);

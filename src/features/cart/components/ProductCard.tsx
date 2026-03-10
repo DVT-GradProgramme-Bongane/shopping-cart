@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import "../styles/ProductCard.css";
-import { AddCartContext, ProductContext } from "../utils/ProductList";
+import "./ProductCard.css";
+import { ProductContext } from "../../../utils/ProductList";
+import { itemAdded } from "../cartItemsSlice";
+import { useAppDispatch } from "../../../app/hooks";
 
 export default function ProductCardComponent() {
   const product = useContext(ProductContext);
-  const handleOnClick = useContext(AddCartContext);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -15,7 +17,7 @@ export default function ProductCardComponent() {
         </div>
 
         <div className="product-information-container">
-          <p className="product-price">R {product.price}</p>
+          <p className="product-price">R {product.price.toFixed(2)}</p>
           <p className="product-title">{product.title}</p>
           <p className="product-description">{product.description}</p>
         </div>
@@ -33,7 +35,7 @@ export default function ProductCardComponent() {
 
         <button
           className="add-to-cart-button"
-          onClick={() => handleOnClick(product)}
+          onClick={() => dispatch(itemAdded(product))}
         >
           Add to cart
         </button>
