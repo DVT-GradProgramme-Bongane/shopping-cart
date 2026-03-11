@@ -1,14 +1,13 @@
 import "./ProductCard.css";
 import { itemAdded } from "../cartItemsSlice";
 import { useAppDispatch } from "../../../app/hooks";
-import type { Product } from "../../../types/Product"
+import type { Product } from "../../../types/Product";
 
 interface ProductCardProps {
   product: Product;
 }
 
-
-export default function ProductCardComponent({product} : ProductCardProps) {
+export default function ProductCardComponent({ product }: ProductCardProps) {
   const dispatch = useAppDispatch();
 
   return (

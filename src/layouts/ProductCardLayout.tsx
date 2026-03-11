@@ -6,21 +6,21 @@ import { fetchProducts } from "../features/products/productsSlice";
 
 export default function ProductCardLayout() {
   const dispatch = useAppDispatch();
-  const {products , loading, error} = useAppSelector(state => state.products);
+  const { products, loading, error } = useAppSelector(
+    (state) => state.products,
+  );
 
-  useEffect(() =>{
-    dispatch(fetchProducts())
-  },[dispatch]);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
   if (loading) return <h1>Loading ...</h1>;
-  if(error) return <h1>{error}</h1>
+  if (error) return <h1>{error}</h1>;
   return (
     <>
       <section className="products-section">
         <div className="product-layout-container">
           {products.map((product) => {
-            return (         
-                <ProductCardComponent product={product} />
-            );
+            return <ProductCardComponent product={product} />;
           })}
         </div>
       </section>
