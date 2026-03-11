@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import ProductCardComponent from "../features/cart/components/ProductCard";
 import "../styles/ProductLayout.css";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { fetchProducts } from "../features/products/productsSlice";
+import {
+  fetchProducts,
+  selectProducts,
+} from "../features/products/productsSlice";
 
 export default function ProductCardLayout() {
   const dispatch = useAppDispatch();
-  const { products, loading, error } = useAppSelector(
-    (state) => state.products,
-  );
+  const { products, loading, error } = useAppSelector(selectProducts);
 
   useEffect(() => {
     dispatch(fetchProducts());
