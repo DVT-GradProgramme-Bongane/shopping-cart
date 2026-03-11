@@ -1,11 +1,14 @@
-import { useContext } from "react";
 import "./ProductCard.css";
-import { ProductContext } from "../../../utils/ProductList";
 import { itemAdded } from "../cartItemsSlice";
 import { useAppDispatch } from "../../../app/hooks";
+import type { Product } from "../../../types/Product"
 
-export default function ProductCardComponent() {
-  const product = useContext(ProductContext);
+interface ProductCardProps {
+  product: Product;
+}
+
+
+export default function ProductCardComponent({product} : ProductCardProps) {
   const dispatch = useAppDispatch();
 
   return (

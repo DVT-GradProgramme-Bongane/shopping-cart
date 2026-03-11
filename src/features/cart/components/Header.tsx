@@ -2,7 +2,6 @@ import "./Header.css";
 import cartIcon from "../../../assets/shopping-chart.png";
 import { useAppSelector } from "../../../app/hooks";
 
-
 export default function HeaderComponent() {
   const cartItems = useAppSelector((state) => state.cartItems);
 
